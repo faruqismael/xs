@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css" /> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    /> -->
+
+    <style id="style">
+      body {
+        color: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        XS: <span><small>shorten your links</small></span>
+      </h2>
+
+      <form action="/shortit" method="post">
+        <input
+          type="url"
+          required
+          name="fullUrl"
+          id="fullUrl"
+          placeholder="url"
+        />
+        <button type="submit">cut it</button>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>FULL URL</th>
+            <th>SHORTEN URL</th>
+            <th>CLICKS</th>
+          </tr>
+        </thead>
+        <% urls.forEach(url => { %>
+        <tbody>
+          <tr>
+            <td>
+              <a><%= url.fullUrl %></a>
+            </td>
+            <td>
+              <a href="<%= url.shortenUrl %>" target="_blank"
+                ><%= url.shortenUrl %></a
+              >
+            </td>
+            <td><%= url.clicks %></td>
+          </tr>
+        </tbody>
+        <% }) %>
+      </table>
+    </div>
+    <script>
+      let styleLoaded = false;
+      let s = document.querySelector("#style");
+      async function fetchStyle() {
+        let response = await fetch("http://localhost:4567/api/style");
+        let data = await response.json();
+        // console.log(data);
+        await localStorage.setItem("style", data.style);
+        s.innerHTML = await localStorage.style;
+        return 0;
+      }
+
+      fetchStyle();
+    </script>
+  </body>
+</html>
