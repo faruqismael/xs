@@ -7,5 +7,5 @@ SHRINK YOUR URL/LINK TO SMALL URL
 -> clone it
 -> cd into it
 
-yarn install
-yarn start
+### yarn install
+### yarn start
