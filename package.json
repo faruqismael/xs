@@ -1,0 +1,30 @@
+{
+  "name": "xs",
+  "version": "1.0.0",
+  "description": "fast url shortener",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "hotStart": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faruqismael/xs.ml.git"
+  },
+  "keywords": [
+    "urlShortener",
+    "node"
+  ],
+  "author": "Faruq Ismael",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faruqismael/xs.ml/issues"
+  },
+  "homepage": "https://github.com/faruqismael/xs.ml#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "shortid": "^2.2.16"
+  }
+}
