@@ -4,61 +4,150 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="./bootstrap.min.css" /> -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    /> -->
+    <title>XS | shrink your url</title>
 
-    <style id="style">
-      body {
-        color: violet;
-      }
-    </style>
+    <style id="style"></style>
   </head>
   <body>
-    <div class="container">
-      <h2>
-        XS: <span><small>shorten your links</small></span>
-      </h2>
-
-      <form action="/shortit" method="post">
-        <input
-          type="url"
-          required
-          name="fullUrl"
-          id="fullUrl"
-          placeholder="url"
-        />
-        <button type="submit">cut it</button>
-      </form>
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>FULL URL</th>
-            <th>SHORTEN URL</th>
-            <th>CLICKS</th>
-          </tr>
-        </thead>
-        <% urls.forEach(url => { %>
-        <tbody>
-          <tr>
-            <td>
-              <a><%= url.fullUrl %></a>
-            </td>
-            <td>
-              <a href="<%= url.shortenUrl %>" target="_blank"
-                ><%= url.shortenUrl %></a
+    <!-- component -->
+    <div
+      class="
+        min-h-screen
+        flex flex-col
+        bg-gradient-to-r
+        from-purple-500
+        via-indigo-500
+        to-purple-500
+        md:flex-row
+        gap-2
+      "
+    >
+      <div
+        class="
+          flex flex-row
+          md:m-auto
+          bg-indigo-800
+          p-6
+          gap-8
+          rounded-lg
+          border-2 border-purple-500
+        "
+      >
+        <div class="my-auto">
+          <div class="flex flex-col justify-center items-center">
+            <div class="text-4xl flex text-purple-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-12 w-12"
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-            </td>
-            <td><%= url.clicks %></td>
-          </tr>
-        </tbody>
-        <% }) %>
-      </table>
+                <path
+                  d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"
+                />
+              </svg>
+              <span>XS</span>
+              <div
+                class="
+                  text-purple-300
+                  my-auto
+                  bg-gradient-to-l
+                  from-purple-700
+                  via-purple-800
+                  to-purple-900
+                  rounded-full
+                  p-4
+                "
+              ></div>
+            </div>
+            <div class="text-lg text-purple-300">shorten your links</div>
+          </div>
+          <div class="container p-4">
+            <form action="/shortit" method="post">
+              <div class="relative flex flex-grow w-full">
+                <input
+                  type="text"
+                  required
+                  name="fullUrl"
+                  id="fullUrl"
+                  placeholder="url"
+                  class="
+                    w-full
+                    rounded
+                    border border-gray-300
+                    focus:border-indigo-500
+                    focus:bg-transparent
+                    focus:ring-2 focus:ring-indigo-200
+                    text-base
+                    outline-none
+                    text-indigo-600
+                    py-1
+                    px-3
+                    leading-8
+                    transition-colors
+                    duration-1000
+                    ease-in-out
+                    focus:text-white
+                  "
+                />
+                <button
+                  type="submit"
+                  class="
+                    text-white
+                    bg-indigo-500
+                    border-0
+                    py-2
+                    px-8
+                    focus:outline-none
+                    hover:bg-indigo-600
+                    rounded
+                    text-lg
+                  "
+                >
+                  Shrink
+                </button>
+              </div>
+            </form>
+
+            <table class="md:visible m-5 p-6 text-white">
+              <thead class="">
+                <tr style="width: 100%">
+                  <th style="width: 75%">FULL URL</th>
+                  <th style="width: 20%">SHORTEN URL</th>
+                  <th style="width: 5%">CLICKS</th>
+                </tr>
+              </thead>
+              <% urls.forEach(url => { %>
+              <tbody class="m-3 p-2 border">
+                <tr>
+                  <td class="border-b border p-2">
+                    <a><%= url.fullUrl %></a>
+                  </td>
+                  <td class="border-b border underline hover:text-yellow-300">
+                    <a href="<%= url.shortenUrl %>" target="_blank"
+                      >xs.com/<%= url.shortenUrl %></a
+                    >
+                  </td>
+                  <td
+                    class="
+                      rounded-ful
+                      bg-purple-700
+                      text-white
+                      font-bold
+                      text-center
+                    "
+                  >
+                    <%= url.clicks %>
+                  </td>
+                </tr>
+              </tbody>
+              <% }) %>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
     <script>
       let styleLoaded = false;
       let s = document.querySelector("#style");

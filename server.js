@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 // using engine
 app.set("view engine", "ejs");
 
-const f = fs.readFileSync("./views/bootstrap.min.css", {
+const f = fs.readFileSync("./views/tailwind.min.css", {
   encoding: "utf-8",
 });
 
@@ -30,7 +30,7 @@ app.get("/api/style", (req, res) => {
 // ('/') router
 app.get("/", async (req, res) => {
   const urls = await Urls.find();
-  console.log(urls);
+  // console.log(urls);
   res.render("index", { urls });
 });
 
@@ -60,5 +60,5 @@ app.get("/:shortenurl", async (req, res) => {
 
 // listen
 app.listen(PORT, () => {
-  console.log("server started ...");
+  console.log(`server started on http://localhost:${PORT} ...`);
 });
